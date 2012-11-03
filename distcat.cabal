@@ -1,0 +1,42 @@
+name:               distcat
+version:            0.1
+synopsis:
+    Command-line tool for computing distance and similarities between strings.
+Description:
+    A simple command tool to output distance and similarity computations.
+    .
+    [Rationale:] DistCat is a handy tool to compute distance and
+        similarity between strings.
+    .
+    [Limitations:]
+        Limited to string computations, for space-separated strings.
+    .
+license:            BSD3
+license-file:       LICENSE
+author:             Lucas DiCioccio
+maintainer:         lucas@dicioccio.fr
+copyright:          Copyright (c) 2012 Lucas DiCioccio
+category:           Tools
+build-type:         Simple
+cabal-version:      >=1.8
+
+homepage:           https://github.com/lucasdicioccio/distcat
+bug-reports:        https://github.com/lucasdicioccio/distcat/issues
+
+source-repository head
+  type:     git
+  location: https://github.com/lucasdicioccio/distcat
+
+library
+  hs-source-dirs:   src
+  ghc-options:      -Wall
+  ghc-prof-options: -auto-all
+  exposed-modules:  Tool.DistCat
+  build-depends:    base
+
+executable distcat
+    main-is: bin/DistCat.hs
+    build-depends: base,
+                   distcat
+    ghc-options: -Wall -rtsopts
+    ghc-prof-options: -auto-all
