@@ -7,6 +7,7 @@ import Data.Function (on)
 type Formatter = (String -> String -> Int -> String)
 type Metric = String -> String -> Int
 
+-- found at: http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Longest_common_substring
 lcstr :: Eq a => [a] -> [a] -> [a]
 lcstr xs ys = maximumBy (compare `on` length) . concat $ [f xs' ys | xs' <- tails xs] ++ [f xs ys' | ys' <- drop 1 $ tails ys]
   where f xs ys = scanl g [] $ zip xs ys
@@ -15,6 +16,7 @@ lcstr xs ys = maximumBy (compare `on` length) . concat $ [f xs' ys | xs' <- tail
 longestSubstringSimilarity :: Eq a => [a] -> [a] -> Int
 longestSubstringSimilarity x y = length $ lcstr x y
 
+-- found at: http://www.haskell.org/haskellwiki/Edit_distance
 editDistance :: Eq a => [a] -> [a] -> Int
 editDistance a b 
     = last (if lab == 0 then mainDiag
